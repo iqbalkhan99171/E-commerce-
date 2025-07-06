@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymSaaS - Membership Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-dumbbell me-2"></i>GymSaaS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light ms-2 px-3" href="/signup">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero bg-gradient-primary text-white py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">
+                        Complete Gym Membership Management System
+                    </h1>
+                    <p class="lead mb-4">
+                        Streamline your gym operations with our powerful SaaS platform. 
+                        Manage members, track payments, and grow your business efficiently.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="/signup" class="btn btn-light btn-lg px-4">
+                            <i class="fas fa-rocket me-2"></i>Start Free Trial
+                        </a>
+                        <a href="#features" class="btn btn-outline-light btn-lg px-4">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image mt-4 mt-lg-0">
+                        <i class="fas fa-users display-1 text-white opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Everything You Need to Manage Your Gym</h2>
+                <p class="text-muted">Powerful features designed for gym owners</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-users text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold">Member Management</h5>
+                            <p class="text-muted">Complete member database with profiles, membership plans, and status tracking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-credit-card text-success"></i>
+                            </div>
+                            <h5 class="fw-bold">Payment Tracking</h5>
+                            <p class="text-muted">Track payments, UPI transactions, and generate payment reports</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-qrcode text-info"></i>
+                            </div>
+                            <h5 class="fw-bold">QR Code Attendance</h5>
+                            <p class="text-muted">Modern QR code-based attendance system for seamless check-in/out</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-chart-bar text-warning"></i>
+                            </div>
+                            <h5 class="fw-bold">Analytics Dashboard</h5>
+                            <p class="text-muted">Comprehensive analytics and insights to grow your business</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-bell text-danger"></i>
+                            </div>
+                            <h5 class="fw-bold">Smart Reminders</h5>
+                            <p class="text-muted">Automatic reminders for expiring memberships and due payments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-wrapper bg-secondary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-download text-secondary"></i>
+                            </div>
+                            <h5 class="fw-bold">Export & Reports</h5>
+                            <p class="text-muted">Export member data and generate detailed reports in CSV format</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Simple, Transparent Pricing</h2>
+                <p class="text-muted">Choose the plan that fits your gym size</p>
+            </div>
+            <div class="row justify-content-center g-4" id="pricing-plans">
+                <!-- Plans will be loaded dynamically -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta bg-primary text-white py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">Ready to Transform Your Gym Management?</h2>
+            <p class="lead mb-4">Join hundreds of gym owners who trust GymSaaS</p>
+            <a href="/signup" class="btn btn-light btn-lg px-5">
+                <i class="fas fa-rocket me-2"></i>Start Your Free Trial
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold">
+                        <i class="fas fa-dumbbell me-2"></i>GymSaaS
+                    </h5>
+                    <p class="text-muted">Complete gym management solution for modern fitness centers.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <p class="mb-0 text-muted">&copy; 2024 GymSaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        // Load pricing plans
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPricingPlans();
+        });
+
+        async function loadPricingPlans() {
+            try {
+                const response = await fetch('/api/auth/plans');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayPricingPlans(data.data);
+                } else {
+                    document.getElementById('pricing-plans').innerHTML = 
+                        '<div class="col-12 text-center text-danger">Failed to load pricing plans</div>';
+                }
+            } catch (error) {
+                console.error('Error loading plans:', error);
+                document.getElementById('pricing-plans').innerHTML = 
+                    '<div class="col-12 text-center text-danger">Error loading pricing plans</div>';
+            }
+        }
+
+        function displayPricingPlans(plans) {
+            const container = document.getElementById('pricing-plans');
+            container.innerHTML = '';
+
+            plans.forEach((plan, index) => {
+                const isPopular = plan.name.toLowerCase().includes('monthly');
+                const planHtml = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow-sm ${isPopular ? 'border-primary' : ''}">
+                            ${isPopular ? '<div class="card-header bg-primary text-white text-center py-2"><small>Most Popular</small></div>' : ''}
+                            <div class="card-body text-center p-4">
+                                <h4 class="fw-bold">${plan.name}</h4>
+                                <div class="pricing-price mb-3">
+                                    <span class="display-4 fw-bold">₹${plan.price}</span>
+                                    <span class="text-muted">/${plan.duration_months === 1 ? 'month' : 'year'}</span>
+                                </div>
+                                <ul class="list-unstyled mb-4">
+                                    ${plan.features.split(',').map(feature => 
+                                        `<li class="mb-2"><i class="fas fa-check text-success me-2"></i>${feature.trim()}</li>`
+                                    ).join('')}
+                                </ul>
+                                <a href="/signup?plan=${plan.id}" class="btn ${isPopular ? 'btn-primary' : 'btn-outline-primary'} w-100">
+                                    Choose Plan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', planHtml);
+            });
+        }
+    </script>
+</body>
+</html>
