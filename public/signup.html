@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - GymSaaS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="/">
+                <i class="fas fa-dumbbell me-2"></i>GymSaaS
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/login">
+                    <i class="fas fa-sign-in-alt me-1"></i>Sign In
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <!-- Header -->
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold text-primary">Start Your Gym Management Journey</h2>
+                            <p class="text-muted">Create your account and choose a plan</p>
+                        </div>
+
+                        <!-- Progress Steps -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="step-item active" data-step="1">
+                                        <div class="step-number">1</div>
+                                        <small>Gym Details</small>
+                                    </div>
+                                    <div class="step-line"></div>
+                                    <div class="step-item" data-step="2">
+                                        <div class="step-number">2</div>
+                                        <small>Choose Plan</small>
+                                    </div>
+                                    <div class="step-line"></div>
+                                    <div class="step-item" data-step="3">
+                                        <div class="step-number">3</div>
+                                        <small>Account Setup</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="signup-form" class="needs-validation" novalidate>
+                            <!-- Step 1: Gym Details -->
+                            <div class="step-content" data-step="1">
+                                <h4 class="mb-3">Tell us about your gym</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gymName" class="form-label">Gym Name *</label>
+                                        <input type="text" class="form-control" id="gymName" name="gymName" 
+                                               placeholder="Enter gym name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ownerName" class="form-label">Owner Name *</label>
+                                        <input type="text" class="form-control" id="ownerName" name="ownerName" 
+                                               placeholder="Enter owner name" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" 
+                                               placeholder="Enter 10-digit phone number" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" 
+                                               placeholder="Enter email address" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Gym Address</label>
+                                    <textarea class="form-control" id="address" name="address" rows="2" 
+                                              placeholder="Enter gym address"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Choose Plan -->
+                            <div class="step-content d-none" data-step="2">
+                                <h4 class="mb-3">Choose your plan</h4>
+                                <div class="row" id="plans-container">
+                                    <!-- Plans will be loaded dynamically -->
+                                    <div class="col-12 text-center">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading plans...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="planId" name="planId" required>
+                            </div>
+
+                            <!-- Step 3: Account Setup -->
+                            <div class="step-content d-none" data-step="3">
+                                <h4 class="mb-3">Set up your account</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="password" class="form-label">Password *</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password" 
+                                                   placeholder="Enter password (min 6 characters)" required>
+                                            <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" 
+                                               placeholder="Confirm password" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selected Plan Summary -->
+                                <div class="card bg-light mb-3" id="plan-summary" style="display: none;">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Selected Plan</h6>
+                                        <div id="selected-plan-details"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#" class="text-primary">Terms of Service</a> and 
+                                        <a href="#" class="text-primary">Privacy Policy</a>
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for updates and tips
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary" id="prev-btn" style="display: none;">
+                                    <i class="fas fa-arrow-left me-2"></i>Previous
+                                </button>
+                                <button type="button" class="btn btn-primary ms-auto" id="next-btn">
+                                    Next<i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                                <button type="submit" class="btn btn-success ms-auto" id="submit-btn" style="display: none;">
+                                    <i class="fas fa-check me-2"></i>Create Account
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+                            <p class="text-muted">Already have an account? 
+                                <a href="/login" class="text-primary text-decoration-none">Sign in here</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        let currentStep = 1;
+        let selectedPlan = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPlans();
+            setupEventListeners();
+            
+            // Check for plan from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const planFromUrl = urlParams.get('plan');
+            if (planFromUrl) {
+                setTimeout(() => selectPlan(planFromUrl), 1000);
+            }
+        });
+
+        function setupEventListeners() {
+            // Navigation buttons
+            document.getElementById('next-btn').addEventListener('click', nextStep);
+            document.getElementById('prev-btn').addEventListener('click', prevStep);
+            
+            // Password toggle
+            document.getElementById('toggle-password').addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+
+            // Password confirmation
+            document.getElementById('confirmPassword').addEventListener('input', function() {
+                const password = document.getElementById('password').value;
+                const confirmPassword = this.value;
+                
+                if (confirmPassword && password !== confirmPassword) {
+                    this.classList.add('is-invalid');
+                    this.setCustomValidity('Passwords do not match');
+                } else {
+                    this.classList.remove('is-invalid');
+                    this.setCustomValidity('');
+                }
+            });
+        }
+
+        async function loadPlans() {
+            try {
+                const response = await fetch('/api/auth/plans');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayPlans(data.data);
+                } else {
+                    document.getElementById('plans-container').innerHTML = 
+                        '<div class="col-12 text-center text-danger">Failed to load plans</div>';
+                }
+            } catch (error) {
+                console.error('Error loading plans:', error);
+                document.getElementById('plans-container').innerHTML = 
+                    '<div class="col-12 text-center text-danger">Error loading plans</div>';
+            }
+        }
+
+        function displayPlans(plans) {
+            const container = document.getElementById('plans-container');
+            container.innerHTML = '';
+
+            plans.forEach(plan => {
+                const isPopular = plan.name.toLowerCase().includes('monthly');
+                const planCard = `
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 plan-card ${isPopular ? 'border-primary' : ''}" 
+                             onclick="selectPlan('${plan.id}')" data-plan-id="${plan.id}">
+                            ${isPopular ? '<div class="card-header bg-primary text-white text-center py-2"><small>Most Popular</small></div>' : ''}
+                            <div class="card-body text-center p-4">
+                                <h5 class="fw-bold">${plan.name}</h5>
+                                <div class="pricing-price mb-3">
+                                    <span class="h2 fw-bold">₹${plan.price}</span>
+                                    <span class="text-muted">/${plan.duration_months === 1 ? 'month' : 'year'}</span>
+                                </div>
+                                <ul class="list-unstyled mb-4">
+                                    ${plan.features.split(',').map(feature => 
+                                        `<li class="mb-2"><i class="fas fa-check text-success me-2"></i>${feature.trim()}</li>`
+                                    ).join('')}
+                                </ul>
+                                <div class="plan-selected d-none">
+                                    <i class="fas fa-check-circle text-success fs-3"></i>
+                                    <p class="text-success fw-bold mt-2">Selected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', planCard);
+            });
+        }
+
+        function selectPlan(planId) {
+            // Remove previous selection
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('border-success', 'bg-light');
+                card.querySelector('.plan-selected').classList.add('d-none');
+            });
+
+            // Select new plan
+            const selectedCard = document.querySelector(`[data-plan-id="${planId}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('border-success', 'bg-light');
+                selectedCard.querySelector('.plan-selected').classList.remove('d-none');
+                
+                document.getElementById('planId').value = planId;
+                
+                // Get plan details for summary
+                const planName = selectedCard.querySelector('h5').textContent;
+                const planPrice = selectedCard.querySelector('.h2').textContent;
+                const planDuration = selectedCard.querySelector('.text-muted').textContent;
+                
+                selectedPlan = {
+                    id: planId,
+                    name: planName,
+                    price: planPrice,
+                    duration: planDuration
+                };
+
+                updatePlanSummary();
+            }
+        }
+
+        function updatePlanSummary() {
+            if (selectedPlan) {
+                const summary = document.getElementById('plan-summary');
+                const details = document.getElementById('selected-plan-details');
+                
+                details.innerHTML = `
+                    <div class="d-flex justify-content-between">
+                        <span><strong>${selectedPlan.name}</strong></span>
+                        <span><strong>${selectedPlan.price}${selectedPlan.duration}</strong></span>
+                    </div>
+                `;
+                
+                summary.style.display = 'block';
+            }
+        }
+
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < 3) {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function validateCurrentStep() {
+            const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                input.classList.remove('is-invalid');
+                
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                }
+
+                // Email validation
+                if (input.type === 'email' && input.value && !saasApp.validateEmail(input.value)) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                }
+
+                // Phone validation
+                if (input.name === 'phone' && input.value && !saasApp.validatePhone(input.value)) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                }
+            });
+
+            // Step 2: Plan selection
+            if (currentStep === 2 && !document.getElementById('planId').value) {
+                showAlert('Please select a plan', 'warning');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function updateStepDisplay() {
+            // Update step indicators
+            document.querySelectorAll('.step-item').forEach((item, index) => {
+                if (index + 1 <= currentStep) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update step content
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.add('d-none');
+            });
+            document.querySelector(`[data-step="${currentStep}"]`).classList.remove('d-none');
+
+            // Update buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            
+            if (currentStep === 3) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+                updatePlanSummary();
+            } else {
+                nextBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Validate passwords match
+            if (data.password !== data.confirmPassword) {
+                showAlert('Passwords do not match', 'danger');
+                return;
+            }
+
+            try {
+                saasApp.showSpinner(true);
+                const response = await saasApp.signup(data);
+                
+                if (response.success) {
+                    showAlert('Account created successfully! Please wait for admin approval.', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 3000);
+                } else {
+                    showAlert(response.message, 'danger');
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                showAlert('Signup failed. Please try again.', 'danger');
+            } finally {
+                saasApp.showSpinner(false);
+            }
+        });
+    </script>
+
+    <style>
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .step-item.active .step-number {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background-color: #e9ecef;
+            margin-top: 20px;
+        }
+
+        .step-item.active ~ .step-item .step-line {
+            background-color: var(--bs-primary);
+        }
+
+        .plan-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card.border-success {
+            border-width: 2px !important;
+        }
+    </style>
+</body>
+</html>
